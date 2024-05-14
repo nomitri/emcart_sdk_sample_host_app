@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name" translatable="false">Nomitri Sample App</string>
+    <string name="permissions_missing_body">Please grant the required permissions in the settings.</string>
+    <string name="item_added">Item added to your cart.</string>
+    <string name="item_removed">Item removed from your cart.</string>
+    <string name="error_corrected">Error corrected.</string>
+    <string name="scanned_item_not_added">Scanned item not added to your cart.</string>
+    <string name="scanned_item_not_removed">Error: Item not removed from your cart.</string>
+    <string name="item_added_without_scan">Error: Item added without scan.</string>
+    <string name="too_many_tracks">Please, add only one item at a time</string>
+    <string name="show_item_longer_next_time">Show the item a bit longer next time!</string>
+    <string name="wrong_gtin_scanned_remove">This item was not in your cart!</string>
+    <string name="item_reidentified">Scan barcode or remove item.</string>
+    <string name="lost_reidentified_track">Lost track of re-identified article. Please, show again.</string>
+    <string name="slow_device">Device is running slow.</string>
+    <string name="update">Update</string>
+    <string name="plus_sign">+</string>
+    <string name="minus_sign">-</string>
+    <string name="manual_barcode_entry">Please enter the product code:</string>
+    <string name="add_products_by_scanning">Add a product to the cart by scanning the barcode</string>
+    <string name="total">Total</string>
+    <string name="no_products_added">No products added</string>
+    <string name="item_classified_add">Item classified</string>
+    <string name="insert_code">INSERT CODE</string>
+    <string name="code">CODE</string>
+</resources>

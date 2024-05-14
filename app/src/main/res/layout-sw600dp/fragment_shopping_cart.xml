@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".VirtualShoppingCartFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/viewgroup_price_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/padding_space_16"
+        android:layout_marginRight="@dimen/padding_space_16"
+        android:layout_marginTop="@dimen/cart_info_margin"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textview_total_shopping_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/padding_space_12"
+            android:fontFamily="@font/alwyn_bold"
+            android:gravity="center_vertical"
+            android:text="@string/total"
+            android:textColor="@color/white"
+            android:textSize="@dimen/nomitri_sdk_text_size_larger"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textview_total_price"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/padding_space_12"
+            android:fontFamily="@font/alwyn_bold"
+            android:gravity="center_vertical"
+            android:textColor="@color/white"
+            android:textSize="@dimen/nomitri_sdk_text_size_larger"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/item_info"
+            android:layout_width="@dimen/nomitri_sdk_medium_spacing"
+            android:layout_height="0dp"
+            android:layout_marginRight="@dimen/nomitri_sdk_small_spacing"
+            app:layout_constraintBottom_toBottomOf="@id/items_count_text_view"
+            app:layout_constraintEnd_toStartOf="@id/textview_total_price"
+            app:layout_constraintTop_toTopOf="@id/textview_total_shopping_cart" />
+
+        <TextView
+            android:id="@+id/items_count_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_alignBaseline="@id/textview_total_shopping_cart"
+            app:layout_constraintBottom_toBottomOf="@id/textview_total_shopping_cart"
+            app:layout_constraintTop_toTopOf="@id/textview_total_shopping_cart"
+            app:layout_constraintEnd_toStartOf="@id/item_info"
+            app:layout_constraintStart_toEndOf="@id/textview_total_shopping_cart" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/virtual_shopping_cart_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/padding_space_16"
+        android:layout_marginTop="@dimen/cart_view_margin"
+        android:layout_marginBottom="@dimen/large_spacing"
+        android:layout_marginRight="@dimen/padding_space_16"
+        android:background="@drawable/button_background"
+        android:orientation="vertical"
+        android:scrollbarSize="@dimen/nomitri_sdk_smaller_spacing"
+        android:scrollbarThumbVertical="@color/nomitri_sdk_colorPrimaryDark"
+        android:scrollbars="vertical"
+        tools:listitem="@layout/list_item_shopping_cart"
+        app:layout_constraintHeight_max="@dimen/shopping_list_max_height"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewgroup_price_info"/>
+
+    <LinearLayout
+        android:id="@+id/empty_linear_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_margin="@dimen/nomitri_sdk_medium_spacing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/nomitri_sdk_small_spacing"
+            android:fontFamily="@font/alwyn_bold"
+            android:text="@string/no_products_added"
+            android:textColor="@color/white"
+            android:textSize="@dimen/nomitri_sdk_text_size_large" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/nomitri_sdk_largest_spacing"
+            android:layout_marginTop="@dimen/nomitri_sdk_small_spacing"
+            android:layout_marginRight="@dimen/nomitri_sdk_largest_spacing"
+            android:layout_marginBottom="@dimen/nomitri_sdk_large_spacing"
+            android:fontFamily="@font/alwyn"
+            android:gravity="center"
+            android:text="@string/add_products_by_scanning"
+            android:textColor="@color/white"
+            android:textSize="@dimen/nomitri_sdk_text_size_normal" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

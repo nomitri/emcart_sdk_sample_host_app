@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="cart_info_margin">45dp</dimen>
+    <dimen name="cart_view_margin">90dp</dimen>
+    <dimen name="shopping_list_max_height">300dp</dimen>
+</resources>

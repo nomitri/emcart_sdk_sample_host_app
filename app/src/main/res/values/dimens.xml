@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="smaller_spacing">5dp</dimen>
+    <dimen name="small_spacing">10dp</dimen>
+    <dimen name="standard_spacing">15dp</dimen>
+    <dimen name="medium_spacing">20dp</dimen>
+    <dimen name="large_spacing">25dp</dimen>
+    <dimen name="largest_spacing">35dp</dimen>
+    <dimen name="cart_info_margin">10dp</dimen>
+    <dimen name="cart_view_margin">45dp</dimen>
+    <dimen name="button_icon_top_w">120dp</dimen>
+    <dimen name="manual_entry_button_landscape_height">80dp</dimen>
+    <dimen name="padding_space_16">16dp</dimen>
+    <dimen name="padding_space_12">12dp</dimen>
+    <dimen name="shopping_list_max_height">200dp</dimen>
+    <dimen name="plus_minus_text">40sp</dimen>
+    <dimen name="plus_minus_btn_width">50dp</dimen>
+    <dimen name="card_view_min_height">100dp</dimen>
+    <dimen name="padding_space_1">1dp</dimen>
+</resources>

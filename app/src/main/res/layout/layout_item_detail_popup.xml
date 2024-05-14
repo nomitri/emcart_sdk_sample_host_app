@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/button_background_state"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/nomitri_sdk_small_spacing"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/item_name_tw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/nomitri_sdk_small_spacing"
+        android:textSize="@dimen/nomitri_sdk_text_size_normal"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/description"/>
+
+    <TextView
+        android:id="@+id/item_price_tw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/nomitri_sdk_small_spacing"
+        android:textSize="@dimen/nomitri_sdk_text_size_largest"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_name_tw"/>
+
+    <TextView
+        android:id="@+id/minus_button"
+        android:layout_width="@dimen/plus_minus_btn_width"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/plus_minus_text"
+        android:textStyle="bold"
+        android:text="@string/minus_sign"
+        android:background="@color/semi_transparent"
+        android:textColor="@color/white"
+        android:gravity="center"
+        app:layout_constraintEnd_toStartOf="@id/amount_tw"
+        android:layout_margin="@dimen/medium_spacing"
+        app:layout_constraintTop_toBottomOf="@id/item_price_tw"/>
+
+    <TextView
+        android:id="@+id/plus_button"
+        android:layout_width="@dimen/plus_minus_btn_width"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/plus_minus_text"
+        android:textStyle="bold"
+        android:text="@string/plus_sign"
+        android:background="@color/semi_transparent"
+        android:textColor="@color/white"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@id/amount_tw"
+        android:layout_margin="@dimen/medium_spacing"
+        app:layout_constraintTop_toBottomOf="@id/item_price_tw"/>
+
+    <TextView
+        android:id="@+id/amount_tw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/nomitri_sdk_text_size_largest"
+        android:layout_margin="@dimen/nomitri_sdk_smaller_spacing"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/plus_button"
+        app:layout_constraintTop_toTopOf="@id/plus_button"/>
+
+    <Button
+        android:id="@+id/amount_upg_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/nomitri_sdk_medium_spacing"
+        android:background="@color/nomitri_sdk_alternatePrimary"
+        android:fontFamily="@font/alwyn_bold"
+        android:paddingLeft="@dimen/nomitri_sdk_medium_spacing"
+        android:paddingRight="@dimen/nomitri_sdk_medium_spacing"
+        android:text="@string/update"
+        android:textColor="@color/white"
+        android:textSize="@dimen/nomitri_sdk_text_size_normal"
+        app:layout_constraintTop_toBottomOf="@+id/minus_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
