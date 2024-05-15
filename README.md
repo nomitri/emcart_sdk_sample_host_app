@@ -1,99 +1,119 @@
-# Nomitri SDK Android Library
+<a href="https://www.nomitri.com/">
+<img src="https://www.nomitri.com/wp-content/uploads/2022/12/nomitri_logo_dark.svg?x16522" alt="Nomitri SDK Logo" width="400" />
+</a>
 
-![Nomitri SDK Logo](link-to-logo.png) <!-- If you have a logo, you can add it here -->
+# Nomitri Retail Android SDK
 
-The Nomitri SDK Android Library allows developers to integrate Nomitri's advanced AI-powered scanning and tracking capabilities into their Android applications. This README.md file provides instructions on how to use the SDK and includes code samples to get you started quickly.
+The Nomitri Retail Android SDK enables developers to integrate Nomitri's advanced AI-powered shopping assistant and
+fraud detection capabilities into their Android applications, turning any shopping cart into an AI-enabled self-checkout
+solution. This README file provides instructions on how to build and run this sample application to get started quickly.
+
+A more extensive documentation of the SDK is available at [Nomitri SDK Documentation](https://sdk.nomitri.com/).
 
 ## Table of Contents
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Event Handling](#event-handling)
-- [License](#license)
+- [Prerequisites](#prerequisites)
+- [Description](#description)
+- [Building](#building)
+- [Supported devices](#supported-devices)
+- [Troubleshooting](#troubleshooting)
+- [Support](#Support)
 
-## Installation
+## Prerequisites
 
-To use the Nomitri SDK Android Library in your Android project, follow these steps:
+To use the Nomitri SDK in your Android project, ensure that you have received an authentication token for the Nomitri
+Maven repository, as well as a license for the SDK.
 
-1. Download the latest version of the SDK from [Nomitri's website](https://www.nomitri.com).
-2. Copy the downloaded AAR file to your project's `libs` directory.
-3. Add the following dependencies in your app's `build.gradle` file:
+1. In this sample app's `gradle.properties` file, add the Maven authentication token as the value for the
+   `artifactRegistryMavenSecret` variable. The value should not be surrounded by quotes.
+
+2. If necessary, update the Nomitri SDK version in `app/build.gradle`:
 
 ```gradle
-dependencies {
-    //////////// Nomitri Retail SDK Dependencies Start \\\\\\\\\\\\\\
-    implementation(name:'nomitri-retailapp-sdk-release', ext:'aar')
-    implementation "com.squareup.retrofit2:retrofit:2.9.0"
-    implementation 'com.squareup.retrofit2:converter-gson:2.8.1'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.5.0'
-    implementation 'com.squareup.retrofit2:converter-scalars:2.1.0'
-    implementation 'com.github.mrmike:ok2curl:0.7.0'
-    implementation 'com.google.protobuf:protobuf-javalite:3.14.0'
-    implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
-    implementation 'com.afollestad.material-dialogs:core:3.3.0'
-    implementation 'com.afollestad.material-dialogs:input:3.3.0'
-    //////////// Nomitri Retail SDK Dependencies End \\\\\\\\\\\\\\
-    
-    // Other dependencies...
-}
+// Nomitri Retail SDK
+implementation 'com.nomitri:retailsdk-qc:x.y.z'
 ```
 
-## Usage
+3. Fill in the license details in `app/src/main/java/com/nomitri/nomitrisampleapp/MainActivity.kt`:
 
-In your Android application, create an instance of NomitriSDK and call the configureView method to initialize it. Make sure to replace the placeholders with your actual API key, license key, and store key provided by Nomitri.
-
-```
+```kotlin
 private fun initNomitriSDK(): NomitriCameraView {
-    nomitriSDK = NomitriSDK(this)
-    return nomitriSDK.configureView(
-        apiKey = "YOUR_API_KEY", // Provided by Nomitri
-        licenseKey = "YOUR_LICENSE_KEY", // Provided by Nomitri
-        storeGroupKey = "YOUR_STORE_KEY", // Provided by Nomitri
-        persistedCartItems = listOf(
-            NomitriCartItem(
-                code = "4105250022003",
-                amount = 2
-            )
-        ),
-        // Additional configuration options...
+    val license = License(
+        apiKey = "YOUR_API_KEY",
+        licenseKey = "YOUR_LICENSE_KEY",
+        storeGroupKey = "YOUR_STORE_KEY",
+        storeUniqueId = "YOUR_STORE_ID",
     )
-}
 ```
 
-Handle various events sent by the SDK using the provided event handlers. Customize your application's behavior based on these events:
+## Description
 
-## Event Handling
+The sample application is an example of a minimal integration of the Nomitri SDK. It combines the camera view generated
+by the SDK with a shopping list displayed on the right side of the screen. Scanned items and quantities are shown in the
+shopping list. It also demonstrates how custom UI buttons are added to the view for manual barcode entry or fruits and
+vegetables visual recognition.
 
-### UX Event Handling:
-The uxEventHandler is called to react to UX events sent by the SDK. You can choose to display your UI or use the built-in SDK UI elements based on the event received.
+No backend integration is provided in this example; it is up to the implementor to connect to the store's price database
+to resolve the items' names and prices from their barcodes and to the store POS to transmit the shopping list and
+proceed to payment.
 
-``` 
-// Example implementation of the UX event handler
-uxEventHandler = { uxEvent ->
-    when (uxEvent.event) {
-        Event.ITEM_ADDED -> {
-            // Display a message when an item is added to the cart
-            nomitriSDK.showItemAddedMessage(getString(R.string.item_added))
-        }
-        // Add more cases for other events...
-    }
-}
-```
+Additionally, the SDK reports events such as detected frauds and scanned items in the form of logs, sometimes
+accompanied by a short video snippet of the action. The implementor should decide whether to send these logs to a
+backend service to perform shopping trip verifications before or during payment.
 
-### Basket Change Event Handling
-The basketChangeEventHandler is called when an item is successfully scanned and added/removed or visually classified. Customize your application's behavior based on the change type and GTIN received.
+## Building
 
-```
-// Example implementation of the basket change event handler
-basketChangeEventHandler = { basketChangeEvent ->
-    // Display a Toast with information about the change
-    Toast.makeText(
-        this,
-        "BASKET CHANGE ${basketChangeEvent.changeType}: ${basketChangeEvent.gtin} ",
-        Toast.LENGTH_SHORT
-    ).show()
-}
-```
+The sample application was developed and built under Android Studio Giraffe (2022.3.1 Patch 1) and tested on Android 12
+and Android 13.
 
-## Licence
-[TODO: // ADD LICENCE INFO]
+- Open the project in Android Studio.
+- Sync the project with Gradle files.
+- Build and run the application on a supported device.
+
+## Supported devices
+
+The sample application was optimized to run on tablet devices in landscape orientation. A phone layout in portrait
+orientation is not guaranteed to be supported.
+
+Choosing the appropriate device to run or test the Nomitri Retail SDK is critical to ensure sufficient performance of
+the AI-related features such as error and fraud detection, item tracking, and scanning. The device should be equipped
+with an AI-capable chipset supporting the Qualcomm SNPE drivers (Qualcomm chipsets only). Therefore, it is not possible
+to test the application in the Android Emulator. For convenience, it is possible to replay a video file as opposed to
+using the device's camera live video input (see [Test with Video](https://sdk.nomitri.com/usage/example.html#test)).
+
+Lastly, the device must be connected to the internet to validate the SDK license at app startup. The SDK use will be
+blocked otherwise.
+
+See [Supported Devices Best Practices](https://sdk.nomitri.com/best-practices.html) for more details on supported
+devices.
+
+## Troubleshooting
+
+See the [troubleshooting](https://sdk.nomitri.com/troubleshooting.html) section of the SDK documentation for further
+help.
+
+### License Validation Issues:
+
+- Ensure the device is connected to the internet.
+- Double-check the API key, license key, store group key, and store unique ID.
+
+### Performance Issues:
+
+- Verify that the device has a Qualcomm AI-capable chipset.
+- Make sure the device meets the minimum hardware requirements outlined in
+  the [Supported Devices Best Practices](https://sdk.nomitri.com/best-practices.html).
+
+### Build Errors:
+
+- Ensure all dependencies are correctly added in the `build.gradle` file and that the Maven authentication token is
+  declared in `gradle.properties`.
+- Sync Gradle files after making changes to the `gradle.properties` or `build.gradle` files.
+
+## Support
+
+If you encounter any issues, have questions, or need assistance with integrating the Nomitri SDK, please reach out via
+our [support page](https://sdk.nomitri.com/support.html). We are here to help you with integration assistance,
+troubleshooting issues, providing guidance on best practices and devices or answering any questions about the SDK
+features and capabilities.
+
+Additionally, we welcome your suggestions to improve the Nomitri SDK or this sample application.
